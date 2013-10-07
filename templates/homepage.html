@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% if all_active_achievement %}
+    {% for achievement in tuple_active_acievement_and_completed %}
+        <div class="well">
+          <h2>{{ achievement.0.name }}</h2>
+           <p>{{ achievement.0.description }}</p>
+           {% if achievement.1 %}
+              <a class="btn" href="/achievement/{{ achievement.0.id }}/">Completed &raquo;</a>
+          {% else %}
+              <a class="btn" href="/achievement/{{ achievement.0.id }}/">Achieve &raquo;</a>
+          {% endif %}
+        </div>
+    {% endfor %}	
+{% endif %}
+{% endblock %}

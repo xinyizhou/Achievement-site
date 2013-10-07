@@ -1,0 +1,39 @@
+{% extends "base_achievement.html" %}
+
+{% block name %} {{ achievement.name }}
+    <span class="label label-warning">{{ achievement.points }}</span> 
+{% endblock%}
+{% block content%}
+    <ul class="pull-left">
+        <li>{{ achievement.description }}</li>
+        <li>{{ achievement_duration}}</li>
+        <li>{{ achievement.deadline }}</li>
+        <li>{{ achievement_category }}</li>
+   {% if user_has_completed_achievement %}
+             <li><span class="badge badge-success">Completed</span></li>
+        </ul>
+    {% else %}
+        <div class="btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown">
+                Witness
+                <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    {% for witness in witnesses %}
+                      <li><a  href="/achievement/{{ achievement.id }}/{{ witness.id }}/">{{ witness.username }}</li>
+                    {% endfor %}
+                </ul>
+        </div>
+        </ul>
+    {% endif %}
+        <ul class="nav nav-list pull-right">
+            <li class="nav-header">
+                Already achieved from:
+            </li>
+            {% for one in competition %}
+            <li class="active">
+                <a href="#">{{one}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+{% endblock %}

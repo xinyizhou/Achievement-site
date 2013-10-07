@@ -1,0 +1,12 @@
+{% extends "base_achievement.html" %}
+
+{% block name %} {{ achievement.name }} {% endblock%}
+{% block content%}
+    <ul>
+        <li>{{ achievement.description }}</li>
+        <li>{{ achievement_duration}}</li>
+        <li>{{ achievement.deadline }}</li>
+        <li>{{ achievement_category }}</li>
+    </ul>
+    <p><a class="btn" href="/vote_list/{{ achievement.id }}/vote">vote &raquo;</a></p>
+{% endblock %}

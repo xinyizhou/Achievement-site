@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% if form.errors %}
+<div class="alert alert-error">Your username and password didn't match. Please try again.</div>
+{% endif %}
+
+<form class="login" method="post">
+{% csrf_token %}
+{{ form.as_p }}
+
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+{% endblock %}

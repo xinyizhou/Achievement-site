@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body %}
+        {% for achievement in all_inactive_achievement %}
+            <div class="well">
+              <h2>{{ achievement.name }}</h2>
+               <p>{{ achievement.description }}</p>
+               <a class="btn" href="{{achievement.id}}">Vote &raquo;</a>
+            </div>
+        {% endfor %}
+{% endblock %}
